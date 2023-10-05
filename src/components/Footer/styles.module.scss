@@ -1,0 +1,16 @@
+.footer {
+  padding: 40px 0;
+  border-top: 2px solid var(--border-primary);
+}
+
+.title {
+  color: var(--text-alternate);
+  font: {
+    weight: 400;
+    size: 12px;
+  }
+  text: {
+    align: center;
+    transform: uppercase;
+  }
+}
