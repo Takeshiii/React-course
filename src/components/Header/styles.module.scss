@@ -1,0 +1,13 @@
+.header {
+  border-bottom: 2px solid var(--border-primary);
+  padding: 24px 0;
+  background: var(--bg-main);
+}
+
+.title {
+  font: {
+    size: 40px;
+    weight: 500;
+  }
+  color: var(--text-primary);
+}

@@ -1,0 +1,16 @@
+.root {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100%;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1300px;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}

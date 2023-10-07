@@ -1,0 +1,14 @@
+@import "../normalize/normalize.css";
+@import "../fonts/fonts.scss";
+@import "../variables/variables.scss";
+
+html,
+body {
+  font-family: "inter", sans-serif;
+}
+
+#root,
+html,
+body {
+  height: 100%;
+}
