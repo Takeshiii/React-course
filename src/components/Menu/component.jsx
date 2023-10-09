@@ -1,4 +1,5 @@
 import { Dish } from "../Dish/component";
+
 import styles from "./styles.module.scss";
 
 export const Menu = ({ dishes }) => {

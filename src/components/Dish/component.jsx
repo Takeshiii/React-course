@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "../Button/component";
+
 import styles from "./styles.module.scss";
 
 export const Dish = ({ dish }) => {

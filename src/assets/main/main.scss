@@ -1,6 +1,8 @@
 @import "../normalize/normalize.css";
 @import "../fonts/fonts.scss";
 @import "../variables/variables.scss";
+@import "../themes/default.scss";
+@import "../themes/dark.scss";
 
 html,
 body {
@@ -10,5 +12,5 @@ body {
 #root,
 html,
 body {
-  height: 100%;
+  height: 100vh;
 }

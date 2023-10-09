@@ -1,0 +1,41 @@
+.form {
+  background-color: var(--bg-modal);
+  border-radius: 8px;
+  padding: 60px;
+}
+
+.title {
+  font-size: 20px;
+  padding-bottom: 20px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input {
+  outline: none;
+  padding: 15px 25px;
+  border: 1px solid {
+    radius: 8px;
+  }
+  font: {
+    size: 20px;
+    weight: 400;
+  }
+
+  &:focus {
+    border-color: var(--border-form);
+  }
+
+  &:last-child {
+    margin-bottom: 20px;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
