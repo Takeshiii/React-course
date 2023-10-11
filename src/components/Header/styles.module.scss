@@ -2,6 +2,8 @@
   border-bottom: 2px solid var(--border-primary);
   padding: 24px 0;
   background: var(--bg-main);
+  display: flex;
+  justify-content: space-between;
 }
 
 .title {

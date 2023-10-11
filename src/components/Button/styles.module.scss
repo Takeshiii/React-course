@@ -23,6 +23,10 @@
     opacity: 0.3;
     pointer-events: none;
   }
+
+  &.active {
+    background-color: var(--tab-active);
+  }
 }
 
 .counter {
@@ -32,10 +36,4 @@
   }
   padding: 10px 17px;
   border-radius: 4px;
-}
-
-.tab:focus {
-  &:focus {
-    background-color: var(--tab-active);
-  }
 }
