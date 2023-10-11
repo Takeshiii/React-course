@@ -1,12 +1,18 @@
 import classNames from "classnames";
 import styles from "./styles.module.scss";
 
-export const Button = ({ title, disabled, onClick, style, active }) => {
+export const Button = ({
+  title,
+  disabled,
+  onClick,
+  active,
+  size = "medium",
+  viewVariant = "base",
+}) => {
   return (
     <button
-      className={classNames(styles.button, styles[style], {
+      className={classNames(styles.button, styles[size], styles[viewVariant], {
         [styles.active]: active,
-        [styles.disabled]: disabled,
       })}
       disabled={disabled}
       onClick={onClick}>

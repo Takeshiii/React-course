@@ -9,17 +9,17 @@ export const Dish = ({ dish }) => {
     <div className={styles.dish}>
       {dish.name}
       <Button
+        size="small"
         disabled={amount === 0}
         onClick={() => setAmount(amount - 1)}
-        title={"-"}
-        style={"counter"}
+        title="-"
       />
       {amount}
       <Button
+        size="small"
         disabled={amount === 5}
         onClick={() => setAmount(amount + 1)}
-        title={"+"}
-        style={"counter"}
+        title="+"
       />
     </div>
   );
