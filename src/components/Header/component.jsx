@@ -1,4 +1,4 @@
-import { ThemeChanger } from "../../ThemeChanger/component";
+import { ThemeChanger } from "../ThemeChanger/component";
 
 import styles from "./styles.module.scss";
 import classNames from "classnames";
