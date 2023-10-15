@@ -6,7 +6,7 @@ import styles from "./styles.module.scss";
 const DEFAULT_VALUE = {
   name: "",
   review: "",
-  rating: 0,
+  rating: 1,
 };
 
 const reducer = (state, action) => {

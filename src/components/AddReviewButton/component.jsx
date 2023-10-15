@@ -1,5 +1,5 @@
-import { Button } from "../Button/component";
 import { useState } from "react";
+import { Button } from "../Button/component";
 import { ReviewForm } from "../ReviewForm/component";
 import { Modal } from "../Modal/component";
 
@@ -8,7 +8,11 @@ export const AddReviewButton = () => {
 
   return (
     <>
-      <Button title={"Add new review"} onClick={() => setIsModalOpen(true)} />
+      <Button
+        size="medium"
+        title="Add new review"
+        onClick={() => setIsModalOpen(true)}
+      />
       {isModalOpen && (
         <Modal>
           <ReviewForm onSubmit={() => setIsModalOpen(false)} />
