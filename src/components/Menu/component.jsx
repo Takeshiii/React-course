@@ -1,12 +1,12 @@
-import { Dish } from "../Dish/component";
+import { DishContainer } from "../Dish/container";
 
 import styles from "./styles.module.scss";
 
-export const Menu = ({ dishes }) => {
+export const Menu = ({ menu }) => {
   return (
     <div className={styles.menu}>
-      {dishes.map((dish) => (
-        <Dish key={dish.id} dish={dish} />
+      {menu.map((id) => (
+        <DishContainer key={id} dishId={id} />
       ))}
     </div>
   );
