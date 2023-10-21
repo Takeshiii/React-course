@@ -5,3 +5,14 @@
   z-index: 2;
   transform: translate(-50%, -50%);
 }
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg-modal);
+  opacity: 0.8;
+  z-index: 1;
+}

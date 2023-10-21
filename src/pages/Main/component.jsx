@@ -1,19 +1,25 @@
 import { useState } from "react";
-import { Restaurant } from "../../components/Restaurant/component";
-import { RestaurantTabs } from "../../components/RestaurantTabs/component";
+import { useSelector } from "react-redux";
 import { Layout } from "../../components/Layout/component";
-import { restaurants } from "../../constants/mock";
+import { RestaurantContainer } from "../../components/Restaurant/container";
+import { RestaurantTabsContainer } from "../../components/RestaurantTabs/container";
+import { selectRestaurantIds } from "../../redux/entities/restaurant/selectors";
 
 export const MainPage = () => {
-  const [activeRestarauntIndex, setActiveRestarauntIndex] = useState(0);
+  const restaurantIds = useSelector(selectRestaurantIds);
+  const [activeRestaurantId, setActiveRestaurantId] = useState(
+    restaurantIds[0]
+  );
+
   return (
     <Layout>
-      <RestaurantTabs
-        restaurants={restaurants}
-        activeTabIndex={activeRestarauntIndex}
-        onTabSelect={setActiveRestarauntIndex}
+      <RestaurantTabsContainer
+        activeRestaurantId={activeRestaurantId}
+        onTabSelect={setActiveRestaurantId}
       />
-      <Restaurant restaurant={restaurants[activeRestarauntIndex]} />
+      {activeRestaurantId && (
+        <RestaurantContainer restaurantId={activeRestaurantId} />
+      )}
     </Layout>
   );
 };

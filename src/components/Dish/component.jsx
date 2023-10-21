@@ -5,6 +5,7 @@ import styles from "./styles.module.scss";
 
 export const Dish = ({ dish }) => {
   const [amount, setAmount] = useState(0);
+
   return (
     <div className={styles.dish}>
       {dish.name}
