@@ -9,29 +9,29 @@ import {
 } from "../../redux/entities/restaurant/selectors";
 import { getRestaurants } from "../../redux/entities/restaurant/thunks/get-restaurants";
 import { REQUEST_STATUS } from "../../constants/statuses";
+import { useRequest } from "../../hooks/use-request";
 
 export const MainPage = () => {
   const restaurantIds = useSelector(selectRestaurantIds);
-  const [activeRestaurantId, setActiveRestaurantId] = useState(
-    restaurantIds[0]
-  );
-  const loadingStatus = useSelector(selectRestaurantLoadingStatus);
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getRestaurants());
-  }, []);
+  const [activeRestaurantId, setActiveRestaurantId] = useState();
+
+  if (!activeRestaurantId && restaurantIds?.length) {
+    setActiveRestaurantId(restaurantIds[0]);
+  }
+
+  const restaurantLoadingStatus = useRequest(getRestaurants);
+
+  if (restaurantLoadingStatus === REQUEST_STATUS.pending) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <Layout>
-      {loadingStatus === REQUEST_STATUS.pending ? (
-        <div>Loading...</div>
-      ) : (
-        <RestaurantTabsContainer
-          activeRestaurantId={activeRestaurantId}
-          onTabSelect={setActiveRestaurantId}
-        />
-      )}
+      <RestaurantTabsContainer
+        activeRestaurantId={activeRestaurantId}
+        onTabSelect={setActiveRestaurantId}
+      />
       {activeRestaurantId && (
         <RestaurantContainer restaurantId={activeRestaurantId} />
       )}

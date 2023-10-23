@@ -8,8 +8,8 @@ export const Restaurant = ({ restaurant }) => {
   return (
     <div>
       <h2 className={styles.title}>{restaurant.name}</h2>
-      <MenuContainer menu={restaurant.menu} />
-      <ReviewsContainer reviews={restaurant.reviews} />
+      <MenuContainer restaurantId={restaurant.id} />
+      <ReviewsContainer restaurantId={restaurant.id} />
       <AddReviewButton />
     </div>
   );
