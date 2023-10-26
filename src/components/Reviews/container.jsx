@@ -10,9 +10,7 @@ export const ReviewsContainer = ({ restaurantId }) => {
   const restaurantReviews = useSelector((state) =>
     selectRestaurantReviewsById(state, restaurantId)
   );
-
   const reviewsLoadingStatus = useRequest(getReviews, restaurantId);
-
   const userLoadingStatus = useRequest(getUsers, restaurantId);
 
   if (

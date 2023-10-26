@@ -5,7 +5,7 @@ import styles from "./styles.module.scss";
 
 const DEFAULT_VALUE = {
   name: "",
-  review: "",
+  text: "",
   rating: 1,
 };
 
@@ -14,7 +14,7 @@ const reducer = (state, action) => {
     case "setName":
       return { ...state, name: action.payload };
     case "setReview":
-      return { ...state, review: action.payload };
+      return { ...state, text: action.payload };
     case "setRating":
       return { ...state, rating: action.payload };
     case "reset":
@@ -44,7 +44,7 @@ export const ReviewForm = ({ onSubmit }) => {
           className={styles.input}
           type="text"
           placeholder="Your review here..."
-          value={formValue.review}
+          value={formValue.text}
           onChange={(event) =>
             dispatch({ type: "setReview", payload: event.target.value })
           }
@@ -61,7 +61,7 @@ export const ReviewForm = ({ onSubmit }) => {
         />
       </div>
       <div className={styles.buttons}>
-        <Button title={"Save"} onClick={() => dispatch({ type: "reset" })} />
+        <Button title={"Save"} onClick={() => onSubmit(formValue)} />
         <Button title={"Close"} onClick={onSubmit} />
       </div>
     </div>

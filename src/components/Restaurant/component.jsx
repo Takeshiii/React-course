@@ -10,7 +10,7 @@ export const Restaurant = ({ restaurant }) => {
       <h2 className={styles.title}>{restaurant.name}</h2>
       <MenuContainer restaurantId={restaurant.id} />
       <ReviewsContainer restaurantId={restaurant.id} />
-      <AddReviewButton />
+      <AddReviewButton restaurantId={restaurant.id} />
     </div>
   );
 };
