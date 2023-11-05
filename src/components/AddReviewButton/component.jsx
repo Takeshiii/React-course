@@ -16,7 +16,7 @@ export const AddReviewButton = ({ restaurantId }) => {
       {isModalOpen && (
         <Modal>
           <ReviewFormContainer
-            onSubmit={() => setIsModalOpen(false)}
+            onClose={() => setIsModalOpen(false)}
             restaurantId={restaurantId}
           />
         </Modal>
