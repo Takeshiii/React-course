@@ -1,27 +1,24 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { selectReviewLoadingStatus } from "../../redux/entities/review/selectors";
+import { useSelector } from "react-redux";
 import { getReviews } from "../../redux/entities/review/thunks/get-reviews";
 import { getUsers } from "../../redux/entities/user/thunks/get-users";
 import { Reviews } from "./component";
 import { REQUEST_STATUS } from "../../constants/statuses";
+import { selectRestaurantReviewsById } from "../../redux/entities/restaurant/selectors";
+import { useRequest } from "../../hooks/use-request";
 
-export const ReviewsContainer = (props) => {
-  const loadingStatus = useSelector(selectReviewLoadingStatus);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getUsers());
-    dispatch(getReviews());
-  }, []);
-
-  return (
-    <div>
-      {loadingStatus === REQUEST_STATUS.pending ? (
-        <div>Loading...</div>
-      ) : (
-        <Reviews {...props} />
-      )}
-    </div>
+export const ReviewsContainer = ({ restaurantId }) => {
+  const restaurantReviews = useSelector((state) =>
+    selectRestaurantReviewsById(state, restaurantId)
   );
+  const reviewsLoadingStatus = useRequest(getReviews, restaurantId);
+  const userLoadingStatus = useRequest(getUsers, restaurantId);
+
+  if (
+    reviewsLoadingStatus === REQUEST_STATUS.pending ||
+    userLoadingStatus === REQUEST_STATUS.pending
+  ) {
+    return <div>Loading...</div>;
+  }
+
+  return <Reviews reviews={restaurantReviews} />;
 };

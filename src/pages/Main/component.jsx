@@ -1,30 +1,26 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Layout } from "../../components/Layout/component";
 import { RestaurantContainer } from "../../components/Restaurant/container";
 import { RestaurantTabsContainer } from "../../components/RestaurantTabs/container";
-import {
-  selectRestaurantIds,
-  selectRestaurantLoadingStatus,
-} from "../../redux/entities/restaurant/selectors";
+import { selectRestaurantIds } from "../../redux/entities/restaurant/selectors";
 import { getRestaurants } from "../../redux/entities/restaurant/thunks/get-restaurants";
 import { REQUEST_STATUS } from "../../constants/statuses";
+import { useRequest } from "../../hooks/use-request";
 
 export const MainPage = () => {
   const restaurantIds = useSelector(selectRestaurantIds);
-  const [activeRestaurantId, setActiveRestaurantId] = useState(
-    restaurantIds[0]
-  );
-  const loadingStatus = useSelector(selectRestaurantLoadingStatus);
-  const dispatch = useDispatch();
+  const restaurantLoadingStatus = useRequest(getRestaurants);
+  const [activeRestaurantId, setActiveRestaurantId] = useState();
 
   useEffect(() => {
-    dispatch(getRestaurants());
-  }, []);
+    setActiveRestaurantId(restaurantIds[0]);
+  }, [restaurantIds]);
 
   return (
     <Layout>
-      {loadingStatus === REQUEST_STATUS.pending ? (
+      {restaurantLoadingStatus === REQUEST_STATUS.pending ||
+      restaurantLoadingStatus === REQUEST_STATUS.idle ? (
         <div>Loading...</div>
       ) : (
         <RestaurantTabsContainer
