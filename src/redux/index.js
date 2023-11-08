@@ -6,6 +6,7 @@ import user from "./entities/user";
 import cart from "./ui/cart";
 import request from "./ui/request";
 import { loggerMiddleware } from "./middleware/logger";
+import { api } from "./services/api";
 
 const store = configureStore({
   reducer: {
@@ -15,9 +16,11 @@ const store = configureStore({
     user,
     cart,
     request,
+    [api.reducerPath]: api.reducer,
   },
   middleware: (getDefaultMiddleware) => [
     ...getDefaultMiddleware(),
+    api.middleware,
     loggerMiddleware,
   ],
 });

@@ -5,8 +5,8 @@ import styles from "./styles.module.scss";
 export const Menu = ({ menu }) => {
   return (
     <div className={styles.menu}>
-      {menu.map((id) => (
-        <DishContainer key={id} dishId={id} />
+      {menu.map((dish) => (
+        <DishContainer key={dish.id} dish={dish} />
       ))}
     </div>
   );
